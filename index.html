@@ -1,191 +1,283 @@
-<!<!DOCTYPE HTML>
-    <html lang="en">
-    <meta  charset="UTF-8">
-    <meta  name="description"   content="Afolabi Portfolio">
-    <meta  name="keywords"   content="Finance">
-    <meta  name="author"   content="Afolabi Mubarak">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afolabi Mubarak | Lead Frontend Architect</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        <title>My Portfolio</title>
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link rel="stylesheet" href="./styles/navbar.css" />
-    </head>
-    <body>
-        <nav class="nav">
-            <img src="./images/logo.png" class="logo" alt="logo" />
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#skills">skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certicates</a></li>
-                <li class='btn'><button><a href="#footer"> Contact us </a></button></li>
-            </ul>
-            <div class="menu-toggle" onclick="toggle()">
-                <div class="one"></div>
-                <div class="two"></div>
-                <div class="three"></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bgDark: '#030712',      
+                        cardDark: '#0f172a',    
+                        accentCyan: '#2dd4bf',  
+                        accentPurple: '#818cf8',
+                        defcommStore: '#fb923c',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #030712; }
+
+        /* Smooth UI Elements */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(45, 212, 191, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Chart Heights */
+        .chart-container { position: relative; width: 100%; height: 260px; }
+
+        /* Animated Hero Background */
+        .hero-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .tech-badge {
+            @apply px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase border;
+        }
+
+        /* Timeline Logic */
+        .timeline-dot {
+            @apply absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-bgDark z-10;
+        }
+    </style>
+</head>
+<body class="text-slate-200 antialiased selection:bg-accentCyan selection:text-bgDark">
+    <div class="hero-mesh"></div>
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <nav class="flex justify-between items-center mb-16">
+            <div class="font-mono text-accentCyan font-bold text-lg tracking-tighter">AM.EXE</div>
+            <div class="flex gap-6 text-sm font-medium text-slate-400">
+                <a href="mailto:afolabimubarak18@gmail.com" class="hover:text-accentCyan transition-colors">Contact</a>
+                <a href="https://github.com/Megabyte-webdev" class="hover:text-white transition-colors">Code</a>
             </div>
         </nav>
-        <main>
-            <div class="hero" id="hero">
-                <h1>Welcome to Afo-webdev's portfolio</h1>
-                <p>
-                    Crafting stunning digital experiences with a passion for innovation and attention to detail.
-                </p>
-                <div class="btns">
-                    <button><a href="Mailto:afolabimubarak18@gmail.com">Hire Me</a></button>
-                    <button><a href="#projects">View Projects</a></button>
+
+        <header class="mb-24">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-accentCyan/10 border border-accentCyan/20 text-accentCyan text-xs font-bold tracking-widest mb-6">
+                AVAILABLE FOR Q3 2026 PROJECTS
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+                Afolabi <span class="text-transparent bg-clip-text bg-gradient-to-r from-accentCyan via-blue-400 to-accentPurple">Mubarak</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl leading-relaxed font-light">
+                Engineering high-integrity frontend architectures for 
+                <span class="text-slate-200">defense-grade security</span>, 
+                <span class="text-slate-200">global commerce</span>, and 
+                <span class="text-slate-200">educational scale</span>.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-10">
+                <a href="https://linkedin.com/in/afolabi-mubarak-2a7783294" target="_blank" class="px-6 py-3 rounded-xl bg-white text-bgDark font-bold hover:bg-accentCyan transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin"></i> View Profile
+                </a>
+                <a href="mailto:afolabimubarak18@gmail.com" class="px-6 py-3 rounded-xl glass-card font-bold hover:bg-slate-800 transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-3xl font-mono font-bold text-white mb-1">05+</div>
+                <div class="text-[10px] text-accentCyan uppercase tracking-widest font-bold">Years Exp</div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-3xl font-mono font-bold text-white mb-1">45%</div>
+                <div class="text-[10px] text-accentPurple uppercase tracking-widest font-bold">Perf Boost</div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-3xl font-mono font-bold text-white mb-1">08+</div>
+                <div class="text-[10px] text-emerald-400 uppercase tracking-widest font-bold">SaaS Ships</div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-3xl font-mono font-bold text-white mb-1">99.9</div>
+                <div class="text-[10px] text-defcommStore uppercase tracking-widest font-bold">Uptime focus</div>
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <div class="flex items-end justify-between mb-10">
+                <h3 class="text-3xl font-bold text-white italic">Selected Works.</h3>
+                <div class="h-px flex-1 bg-slate-800 mx-8 mb-2 hidden md:block"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-accentCyan/10 text-accentCyan rounded-2xl">
+                            <i class="fa-solid fa-shield-halved text-2xl"></i>
+                        </div>
+                        <a href="https://defcomm.ng/" target="_blank" class="text-slate-500 group-hover:text-accentCyan transition-colors">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">DefComm Security</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        An end-to-end encrypted ecosystem for SilexSecure. Engineered the real-time messaging interface and secure file-sharing protocols.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-accentCyan/5 border-accentCyan/20 text-accentCyan">WebSockets</span>
+                        <span class="tech-badge bg-accentCyan/5 border-accentCyan/20 text-accentCyan">Cryptography</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl group border-defcommStore/20">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-defcommStore/10 text-defcommStore rounded-2xl">
+                            <i class="fa-solid fa-store text-2xl"></i>
+                        </div>
+                        <a href="https://appstore.defcomm.ng" target="_blank" class="text-slate-500 group-hover:text-defcommStore transition-colors">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Defcomm Store</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Centralized marketplace for verified applications. Implemented a rigid vetting pipeline and automated signing interface for developers.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-defcommStore/5 border-defcommStore/20 text-defcommStore">Marketplace</span>
+                        <span class="tech-badge bg-defcommStore/5 border-defcommStore/20 text-defcommStore">App Vetting</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-accentPurple/10 text-accentPurple rounded-2xl">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <a href="https://rsbpp.nl" target="_blank" class="text-slate-500 group-hover:text-accentPurple transition-colors">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Rotterdam School of Biz</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Global educational portal handling thousands of students. Built with Next.js for SSR performance and SEO optimization.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-accentPurple/5 border-accentPurple/20 text-accentPurple">Next.js</span>
+                        <span class="tech-badge bg-accentPurple/5 border-accentPurple/20 text-accentPurple">LMS</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-3 bg-emerald-400/10 text-emerald-400 rounded-2xl">
+                            <i class="fa-solid fa-building-shield text-2xl"></i>
+                        </div>
+                        <a href="https://npf.gov.ng" target="_blank" class="text-slate-500 group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xl"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Nigeria Police e-CMR</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        GovTech solution for vehicle verification. Focused on high-accessibility forms and robust data validation for law enforcement.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge bg-emerald-400/5 border-emerald-400/20 text-emerald-400">GovTech</span>
+                        <span class="tech-badge bg-emerald-400/5 border-emerald-400/20 text-emerald-400">Security</span>
+                    </div>
                 </div>
             </div>
-            <div class="skills container" id="skills">
-                <article>
-                    <h2 class="main-heading">Technical Skills</h2>
-                    <h5>Frontend development</h5>
-                    <p>
-                        Proficient in <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>, with expertise in building responsive and user-friendly interfaces. Experienced in leveraging popular frameworks like <b>Reactjs</b>  to create dynamic and efficient web applications.
-                    </p>
-                </article>
-                <article>
-                    <h2 class="main-heading">Critical Thinking Skills</h2>
-                    <h5>Philosophy and Logical Reasoning</h5>
-                    <p>
-                        Well educated, trained and experienced on the rules and laws to abide with when dealing with logical tasks or problems, by following the principles of arguments with the sole aim of reaching a sound deductive conclusions.
-                    </p>
-                </article>
-				<article>
-                    <h2 class="main-heading">Mathematics Skills</h2>
-                    <h5>Arithmetics</h5>
-                    <p>Having a sound knowledge on Mathematical calculations ue to my field of study. Familiar with a a lot engineering and extensive calculations and theories in mathematics.
-                    </p>
-                </article>
-                <article>
-                    <h2 class="main-heading">Problem solving Skills</h2>
-                    <h5>Commitment and dedication</h5>
-                    <p>
-                        As it is already known that with study, experience and practice nothing is impossible to do. I always make sure i satisfy a client's demand and make sure my work is prominent.                   </p>
-                </article>
-            </div>
-            <div class="projects container" id="projects">
-                <h2 class="main-heading">Web development projects</h2>
-                <div class="slider">
-                    <div class="controls">
-                        <span class="prev-btn">&#10094;</span>
-                        <span class="next-btn">&#10095;</span>
-                    </div>
-                    <div class="dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <ul>
-                        <li>
-                            <img src="./images/project1.jpg" alt="project1" />
-                            <h3>CONDALA WEBSITE LANDINGPAGE</h3>
-                            <p>
-                                This is shopping website landingpage, featuring a seamless user experience and sleek design.
-                            </p>
-                            <button><a href="https://megabyte-webdev.github.io/condalawebsite.com">View Project</a></button>
-                        </li>
-                        <li>
-                            <img src="./images/project2.jpg" alt="project1" />
-                            <h3>Global Business WEBSITE</h3>
-                            <p>
-                                This is a landingpage for a modern or standard business with a stunning and an elegant look.
-                            </p>
-                            <button><a href="https://megabyte-webdev.github.io/globalbusiness.com">View Project</a></button>
-                        </li>
-                        <li>
-                            <img src="./images/project3.jpg" alt="project3" />
-                            <h3>ooutech WEBSITE</h3>
-                            <p>
-                                it's a landing page site for the benefit of OOU Tech Community members and enthusiasts to have access to information about the community.
-                            </p>
-                            <button><a href="https://ooutechcommunity.42web.io">View Project</a></button>
-                        </li>
-                        <li>
-                            <img src="./images/project4.jpg" alt="project4" />
-                            <h3>Housing WEBSITE</h3>
-                            <p>
-                                This is a website for booking and securing a well conducive apartment in well suited environment.
-                            </p>
-                            <button><a href="megabyte-webdev.github.io/realhousing.com">View Project</a></button>
-                        </li>
-                    </ul>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-24">
+            <div class="glass-card p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                    <span class="w-1 h-6 bg-accentCyan rounded-full"></span> Technical Radar
+                </h3>
+                <div class="chart-container">
+                    <canvas id="skillsRadar"></canvas>
                 </div>
             </div>
 
+            <div class="glass-card p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                    <span class="w-1 h-6 bg-accentPurple rounded-full"></span> Business Impact
+                </h3>
+                <div class="chart-container">
+                    <canvas id="impactBar"></canvas>
+                </div>
+            </div>
+        </section>
 
-            <div class="certificates container" id="certificates">
-                <h2 class="main-heading">Licenses & Certificates</h2>
-                <ul>
-                    <li>
-                        <img src="./images/freecodecamp.jpg" alt="project1" />
-                        <h3> Responsive Web design</h3>
-                        <span>Freecodecamp</span>
-                        <button><a href="https://freecodecamp.org/certification/Afolabi-mubarak/responsive-web-design">Show Credential</a></button>
-                        <p>
-                            <b>Credential ID-</b> Afolabi-mubarak
-                        </p>
-                        <p>
-                            <b>Issue Date-</b> Nov 2023
-                        </p>
+        <section class="mb-24">
+            <h3 class="text-3xl font-bold text-white mb-12 text-center">Career Trajectory</h3>
+            <div class="relative space-y-12 before:absolute before:inset-0 before:ml-1 md:before:mx-auto before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accentCyan before:via-accentPurple before:to-transparent">
+                
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="timeline-dot bg-accentCyan group-hover:scale-150 transition-transform"></div>
+                    <div class="w-[calc(100%-2rem)] md:w-[45%] glass-card p-6 rounded-2xl ml-8 md:ml-0">
+                        <span class="font-mono text-accentCyan text-xs">2025 - PRESENT</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Lead Frontend Engineer · Ticket Crib</h4>
+                        <p class="text-slate-400 text-sm mt-2">Optimizing high-frequency transaction dashboards and real-time event seating engines.</p>
+                    </div>
+                </div>
 
-                    </li>
-                    <li>
-                        <img src="./images/oou.png" alt="project2" />
-                        <h3>Software Engineering workshop</h3>
-                        <span>Olabisi Onabanjo University (OOU)</span>
-                        <button><a href="https://bcvs.vercel.app/verify">Show Credential</a></button>
-                        <p>
-                            <b>Credential ID-</b> SWEP-1705436149528
-                        </p>
-                        <p>
-                            <b>Issue Date-</b> Dec 2023
-                        </p>
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="timeline-dot bg-accentPurple group-hover:scale-150 transition-transform"></div>
+                    <div class="w-[calc(100%-2rem)] md:w-[45%] glass-card p-6 rounded-2xl ml-8 md:ml-0">
+                        <span class="font-mono text-accentPurple text-xs">2024</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Senior Engineer · Bouwnce</h4>
+                        <p class="text-slate-400 text-sm mt-2">Scaled a multi-vendor marketplace to 5k+ daily active users with optimized checkout flows.</p>
+                    </div>
+                </div>
 
-                    </li>
-                    <li>
-                        <img src="./images/dsn.png" alt="project3" />
-                        <h3>Route to Artificial Intelligence(TRAIL)</h3>
-                        <span>DSN AI- Data science Nigeria</span>
-                        <button><a href="https://cert.datasciencenigeria.ai/">Show Credential</a></button>
-                        <p>
-                            <b>Credential ID-</b> DSNAI0010769
-                        </p>
-                        <p>
-                            <b>Issue Date-</b> Dec 2023
-                        </p>
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="timeline-dot bg-defcommStore group-hover:scale-150 transition-transform"></div>
+                    <div class="w-[calc(100%-2rem)] md:w-[45%] glass-card p-6 rounded-2xl ml-8 md:ml-0">
+                        <span class="font-mono text-defcommStore text-xs">2023 - 2024</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Frontend Lead · SilexSecure</h4>
+                        <p class="text-slate-400 text-sm mt-2">Architected the Defcomm Store and browser-based secure communication platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    </li>
-                </ul>
+        <footer class="text-center pt-16 border-t border-slate-800">
+            <h2 class="text-2xl font-bold text-white mb-4">Let's build something significant.</h2>
+            <p class="text-slate-500 text-sm mb-8">Currently based in Nigeria · Open to global opportunities.</p>
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors text-xl"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
-        </main>
-        <footer id="footer" class="footer container">
-            <div>
-                <h4>Get In Touch</h4>
-                <p>Feel free to reach out to me at <a href="Mailto:afolabimubarak18@gmail.com">afolabimubarak18@gmail.com</a> to discuss your project requirements or any questions you may have i'm always eager to collaborate and contribute my expertise to help bring your ideas to life.</p>
-            </div>
-            <div>
-                <h4>Hire Me</h4>
-                <p>If you are interested in working with me, please visit my <a href="https://www.linkedin.com/in/afolabi-mubarak-2a7783294?utm_source=share&utm_campaign=share_via&utm_content=profile">LinkedIn</a> page to learn more about my services, pricing, and availability. I look forward to the opportunity to contribute to your next web development project.</p>
-            </div>
-            <div>
-                <h4>Follow Me </h4>
-                <p>You can also stay updated on my latest projects and insights by folowing me on social media platforms like <a href="https://www.linkedin.com/in/afolabi-mubarak-2a7783294?utm_source=share&utm_campaign=share_via&utm_content=profile">LinkedIn</a> and <a href="https://x.com/Mubarak_Afo">Twitter</a>. I'm always happy to connect and engage with fellow web development enthusiasts.</p>
-            </div>
-            <div class="foot-note">
-                <small>Afo-webdev &copy; <span class="year">2023</span> All rights reserved</small>
-                <small>Terms & Conditions</small>
-                <small>Privacy Policy</small>
-            </div>
+            <p class="text-[10px] tracking-[0.4em] text-slate-600 uppercase">Designed & Engineered by Afolabi Mubarak &copy; 2026</p>
         </footer>
+    </div>
 
-
-        <!-- JavaScript files-->
-        <script src="./scripts/script.js"></script>
-        <script src="./scripts/nav.js"></script>
-    </body>
+    <script src="./scripts/script.js"></script>
+</body>
 </html>
