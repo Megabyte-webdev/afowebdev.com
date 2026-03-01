@@ -1,46 +1,46 @@
-window.onload = () => {
-    const nav = document.querySelector(".nav");
-    const prevBtn = document.querySelector(".slider .prev-btn");
-    const nextBtn = document.querySelector(".slider .next-btn");
-    const slideContainer = document.querySelector(".slider ul");
-    const dots = document.querySelectorAll(".slider .dot");
+ const ctxRadar = document.getElementById('skillsRadar');
+        const ctxBar = document.getElementById('impactBar');
 
-    let current = 0;
-    let slide = 0;
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Plus Jakarta Sans';
 
-    window.addEventListener("scroll", () => {
-        window.scrollY > 30 ? nav.classList.add("sticky") : nav.classList.remove("sticky");
-    });
-function GoToSlide(n){
-  dots[current].classList.remove('active');
-        current = n;
-        slide = current * -25;
-        dots[n].classList.add('active');
-        slideContainer.style.transform = `translateX(${slide}%)`;
-}
-dots.forEach((e, index)=>{
-  e.onclick=()=>{
-    GoToSlide(index);
-  }
-})
-    function NextSlide() {
-current===dots.length-1 ? GoToSlide(dots.length-1) : GoToSlide(current+1);
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['React/Next.js', 'TypeScript', 'System Design', 'UI/UX', 'Performance', 'Security'],
+                datasets: [{
+                    data: [98, 92, 90, 85, 95, 88],
+                    backgroundColor: 'rgba(45, 212, 191, 0.1)',
+                    borderColor: '#2dd4bf',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#2dd4bf'
+                }]
+            },
+            options: {
+                scales: { r: { grid: { color: 'rgba(255,255,255,0.05)' }, angleLines: { color: 'rgba(255,255,255,0.05)' }, ticks: { display: false } } },
+                plugins: { legend: { display: false } },
+                maintainAspectRatio: false
+            }
+        });
 
-    }
-    function PrevSlide() {
-      current===0 ? GoToSlide(0): GoToSlide(current-1);
-
-    }
-
-    nextBtn.addEventListener('click', () => {
-        NextSlide()
-    })
-    prevBtn.addEventListener('click', () => {
-        PrevSlide()
-    })
-
-
-    //Footer
-
-    document.querySelector('.footer .year').innerHTML=new Date().getFullYear()
-}
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['UX Speed', 'Conversion', 'Security', 'Code Quality'],
+                datasets: [{
+                    label: 'Improvement %',
+                    data: [45, 30, 90, 75],
+                    backgroundColor: ['#2dd4bf', '#818cf8', '#fb923c', '#34d399'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: { 
+                    x: { grid: { display: false }, border: { display: false } },
+                    y: { grid: { display: false }, border: { display: false } }
+                },
+                maintainAspectRatio: false
+            }
+        });
