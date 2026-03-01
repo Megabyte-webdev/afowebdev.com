@@ -1,4 +1,23 @@
- const ctxRadar = document.getElementById('skillsRadar');
+ tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bgDark: '#030712',      
+                        cardDark: '#0f172a',    
+                        accentCyan: '#2dd4bf',  
+                        accentPurple: '#818cf8',
+                        defcommStore: '#fb923c',
+                    }
+                }
+            }
+        }
+
+
+const ctxRadar = document.getElementById('skillsRadar');
         const ctxBar = document.getElementById('impactBar');
 
         Chart.defaults.color = '#94a3b8';
