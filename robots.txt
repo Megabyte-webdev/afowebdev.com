@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# SEO optimization for Afolabi Mubarak / afowebdev
+Disallow: /cgi-bin/
+Disallow: /private/
+
+# Point to your sitemap once you generate one
+Sitemap: https://afolabiwebdev.42web.io/sitemap.xml
